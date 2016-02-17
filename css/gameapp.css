@@ -1,0 +1,195 @@
+body {
+    /* Typography Declarations */
+    color: #222222;
+    font-size: 1em;
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.content-footer,
+.masthead-heading,
+.masthead-intro {
+  text-align: center;
+  clear: all;
+  float: none;
+}
+.masthead {
+  margin-bottom: 1em;
+  padding: 6em 1em;
+  background-image: url('../images/IMG_0348.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top: solid 1em #FF6666;
+  }
+.masthead-heading {
+  margin-bottom: 0.1em;
+  color: white;
+  text-shadow: 2px 2px #ff0000;
+  font-size: 4em;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+}
+
+.masthead-intro {
+  margin-top: -0.2em;
+  color: white;
+  font-size: 2em;
+  font-family: "Gentium Book Basic", Georgia, serif;
+}
+/* Navigation Section */
+.top-navigation {
+
+    width: 100%;
+    z-index: 9999;
+}
+.content {
+    width: 970px;
+    margin: 0 auto;
+    text-align: center;
+}
+.top-navigation > .content {
+    height: 70px;
+}
+.top-navigation .links {
+    color: white;
+    font-size: 16px;
+    float: none;
+    margin: 0 auto;
+    margin-top: 25px;
+    -webkit-font-smoothing: antialiased;
+}
+.top-navigation .links li {
+    display: inline-block;
+    padding-left: 1em;
+    padding-right: 1em;
+    background-color: black;
+}
+.top-navigation .links .active {
+    color: white;
+    font-weight: 500;
+}
+.top-navigation .links li {
+    cursor: pointer;
+}
+.top-navigation a:link, .top-navigation a:visited{
+    color: white;
+    text-decoration: none;
+}
+.top-navigation a:hover {
+   color: gray;
+   text-decoration: none;
+   float: none;
+
+}
+
+.introduction-section,
+.location-section,
+.questions-section {
+    /* max-width: 38em; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+  font-size: 1.5em;
+  color: brown;
+  font-family: "Futura", "Arial", sans-serif;
+}
+.introduction > p,
+.location > p,
+.content-footer > p {
+    /* Typography Declarations */
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.social > li {
+    display: inline-block;
+    padding: 0em 1em 1em 1em;
+}
+.social a {
+    text-decoration: none;
+    font-weight: normal;
+    color: black;
+}
+.social a:hover {
+    font-weight: bold;
+}
+
+/*
+@media only screen and (max-width: 500px) {
+    .masthead {
+        padding: 3em 0;
+    }
+    .masthead-heading {
+        font-size: 3em;
+    }
+    .content-footer {
+        font-size: 0.75em;
+    }
+}
+*/
+.separator {
+  clear: all;
+}
+
+#app {
+  border: 1px solid red;
+
+}
+
+#left_control {
+  border: 1px solid green;
+  float: left;
+  width: 20em;
+}
+
+#main{
+  border: 1px solid yellow;
+  float: right;
+}
+ 
+.button_vertical {
+    width: 10em;
+    height: 2em;
+    border: 1px solid gray; 
+}
+
+.status {
+    display: inline-block;
+    width: 15%;
+    height: 1.5em;
+    padding: 0;
+    margin: 10 0 10 0;
+    border: 3px solid gray; 
+}
+
+#sequence-wrapper {
+    padding: 0 0 10 0;
+    margin: 0 0 10 0;
+}
+
+.entry {
+    display: inline-block;
+    width: 5em;
+    height: 1em;
+    border: 1px solid gray; 
+    color: gray;
+}
+
+#response {
+  margin-top: 1em;
+}
+
+#buttonbar {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.button {
+    float: right;
+    width: 10em;
+    height: 1.5em;
+    border: 2px solid black; 
+}
