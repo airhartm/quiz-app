@@ -25,17 +25,17 @@
       </ul>
     </nav>
 </header>
+
 <section class="introduction-section">  
 
 <div id="app">
-	<div id"left_control">
+	<div id="left_control">
 
 		<div id="newgame" class="button_vertical">New Game</div>
 
 		<div id="q_count" class="button_vertical"># of 5</div>
 
-	</div>
-	<div id="main">
+	</div><div id="main">
 
 		<h2 class="section-heading">The Fibonacci Math Quiz</h2>
 
@@ -57,30 +57,26 @@
 	
 		<div id="question"></div>
 
-		<div id="sequence_wrapper">
+		<div id="sequence">
 
 			<p>Complete the missing numbers in the following Fibonacci sequence:<p>
 
-			<div id="Entry_1" class="entry">Integer 1</div>
+			<form>
+			  <input type="number" name="Entry_1" class="entry" placeholder="Integer" readonly required value="">
+			  <input type="number" name="Entry_2" class="entry" placeholder="Integer" readonly required value="">
+			  <input type="number" name="Entry_3" class="entry" placeholder="Integer" readonly required value="">
+			  <input type="number" name="Entry_4" class="entry" placeholder="Integer" readonly required value="">
+			  <input type="number" name="Entry_5" class="entry" placeholder="Integer" readonly required value="">
+			  <input type="number" name="Entry_6" class="entry" placeholder="Integer" readonly required value="">
+			  <input type="number" name="Entry_7" class="entry" placeholder="Integer" readonly required value="">
+			  <input type="submit" value="Submit">
+			</form>
 
-			<div id="Entry_2" class="entry">Integer 2</div>
-
-			<div id="Entry_3" class="entry">Integer 3</div>
-
-			<div id="Entry_4" class="entry">Integer 4</div>
-
-			<div id="Entry_5" class="entry">Integer 5</div>
-
-			<div id="Entry_6" class="entry">Integer 6</div>
-
-			<div id="Entry_7" class="entry">Integer 7</div>
 		</div>
 
 		<div id="response">Response</div>
 
 		<div id="buttonbar">
-
-			<div id="submit" class="button">Submit</div>		
 
 			<div id="next" class="button">Next Question</div>
 		</div>
@@ -90,6 +86,7 @@
 </div>
           
 </section>
+
 <footer class="content-footer">
   <h2>Contact me</h2>
     <p>Say hi to me on these social networks:</p>
@@ -100,6 +97,8 @@
     </ul>
 </footer>
 
+<!--
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+-->
 </body>
 </html>

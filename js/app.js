@@ -1,33 +1,31 @@
+//initialize variables
+
+var fiboEntry;
+var fiboArray = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811];
+var fiboCalc;
+var fiboCounter=1;
+var gameResponse;
+var gameStatusArray;
+
 $(document).ready(function() {
 
-//add list items
-  $('#append').click(function(){
-    var txtentry = document.getElementById('task');
-    var txttask = txtentry.value;
-    event.preventDefault();
+   //reset game
+    $(".new").click(function(){
+      newGame();
+    });
 
-    $('<li></li>').appendTo('#list').html('<div class="control">\n' +
-      '<div class="fa fa-square-o nocheck" ></div>\n' +
-      '<div class="fa fa-check-square-o ycheck" style="display:none"></div>\n' +
-      '</div>\n' +
-      '<div class="fa fa-minus-square remove"></div><div class="item">\n' +
-      txttask + '</div>');
-  });
+  //new game
+  newGame();
 
-//delete list items
- $('#list').on('click', '.fa-minus-square', function(e){
-  e.preventDefault();
-    $(this).parent().remove(); 
-  });
+  function newGame () {
+    resetVars();
 
-//toggle add and remove controls
- $('#list').on('click', '.nocheck', function(e){
-    $(this).next('.ycheck').toggle();
-    $(this).toggle();
-}); 
- $('#list').on('click', '.ycheck', function(e){
-    $(this).prev('.nocheck').toggle();
-    $(this).toggle();
-}); 
+  function fiboDisplay () {
+    fiboDisplay='';
+    for (i = 0; i <= 7; i++) { 
+        fiboArray[i]=fiboArray[i-2]+fiboArray[i-1];
+    }
+    $('form').html(fiboDisplay);
+  }
 
-});
+};
