@@ -23,7 +23,6 @@ $(document).ready(function() {
     e.preventDefault();
          for (i = 4; i< 7; i++) { 
                 fiboResponse[i]=$('#Entry_'+i).val();
-      //console.log(fiboResponse[i],i);
          }
     responseEval(fiboResponse);
 
@@ -41,36 +40,37 @@ $(document).ready(function() {
   };
 
   function newQuestion () {
-      fiboResponse.length=0
-      fiboRandom = getRandomNumber();
       fiboCounter++;
-      if (fiboCounter < 6) {
-        $('#q_count').text(fiboCounter+" of 5");
+        $('#q_count').text("Question "+fiboCounter+" of 5");
         $('#response').text("Enter the missing numbers in the Fibonacci sequence above.");
         currentQuestion=fiboDisplay();
         document.getElementById("guessSubmit").style.visibility = "visible";
         document.getElementById("next").style.visibility = "hidden";
-      } else {
-        $('#response').text("Game over. Click 'New Game' to play again.");
-        document.getElementById("guessSubmit").style.visibility = "hidden";
-        document.getElementById("next").style.visibility = "hidden";
-      }
   };
 
 });
 
   function getRandomNumber () {
-    return parseInt(Math.random()*7)+1;
-  }
+    i=parseInt(Math.random()*fiboCounter*4)+1;
+    return i;
+    }
 
   function fiboDisplay (fiboForm) {
-         for (i = 0; i< 4; i++) { 
+      fiboResponse.length=0;
+      fiboRandom = getRandomNumber();
+        for (i = 0; i< 8; i++) { 
+                $('#Entry_'+i).css("color", "black");
+                $('#Entry_'+i).readonly=true;
+                fiboResponse[i]="";
+                $('#Entry_'+i).val("");
+        }
+         for (i = 0; i< 7-fiboCounter; i++) { 
                 $('#Entry_'+i).css("color", "black");
                 $('#Entry_'+i).readonly=true;
                 fiboResponse[i]=fiboArray[fiboRandom+i];
                 $('#Entry_'+i).val(fiboResponse[i]);
         }
-         for (i = 4; i< 7; i++) { 
+         for (i = 7-fiboCounter; i< 8; i++) { 
                 $('#Entry_'+i).css("color", "black");
                 $('#Entry_'+i).readonly=false;
                 fiboResponse[i]=fiboArray[fiboRandom+i];
@@ -81,7 +81,8 @@ $(document).ready(function() {
 
   function responseEval(fiboResponse) {
          $('#Status_'+fiboCounter).css("backgroundColor", "green");
-         for (i = 0; i< 7; i++) { 
+         $('#Status_'+fiboCounter).css("color", "white");
+         for (i = 0; i< 8; i++) { 
                 $('#Entry_'+[i]).css("color", "green");
                 if (fiboArray[fiboRandom+i]!=fiboResponse[i]) {
                   $('#Entry_'+[i]).css("color", "red");
@@ -90,7 +91,12 @@ $(document).ready(function() {
           }
           $('#response').text("The correct answers were: "+fiboResponse);
           document.getElementById("guessSubmit").style.visibility = "hidden";
+      if (fiboCounter < 5) {
           document.getElementById("next").style.visibility = "visible";
+      } else {
+          $('#response').text("Game over! Click 'New Game' to play again.");
+          document.getElementById("next").style.visibility = "hidden";
+      }
   }
 
   function progress_bar () {
