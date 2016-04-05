@@ -31,7 +31,7 @@
 <div id="app">
 	<div id="left_control">
 
-		<div id="newgame" class="button_vertical">New Game</div>
+		<div class="button_vertical"><a id="new" href="#">New Game</a></div>
 
 		<div id="q_count" class="button_vertical"># of 5</div>
 
@@ -61,16 +61,17 @@
 
 			<p>Complete the missing numbers in the following Fibonacci sequence:<p>
 
-			<form>
-			  <input type="number" name="Entry_1" class="entry" placeholder="Integer" readonly required value="">
-			  <input type="number" name="Entry_2" class="entry" placeholder="Integer" readonly required value="">
-			  <input type="number" name="Entry_3" class="entry" placeholder="Integer" readonly required value="">
-			  <input type="number" name="Entry_4" class="entry" placeholder="Integer" readonly required value="">
-			  <input type="number" name="Entry_5" class="entry" placeholder="Integer" readonly required value="">
-			  <input type="number" name="Entry_6" class="entry" placeholder="Integer" readonly required value="">
-			  <input type="number" name="Entry_7" class="entry" placeholder="Integer" readonly required value="">
-			  <input type="submit" value="Submit">
-			</form>
+      <form id="fiboForm">
+        <input type="number" id="Entry_0" name="entry" class="entry" placeholder="" required value="">
+        <input type="number" id="Entry_1" name="entry" class="entry" placeholder="" required value="">
+        <input type="number" id="Entry_2" name="entry" class="entry" placeholder="" required value="">
+        <input type="number" id="Entry_3" name="entry" class="entry" placeholder="" required value="">
+        <input type="number" id="Entry_4" name="entry" class="entry" placeholder="" required value="">
+        <input type="number" id="Entry_5" name="entry" class="entry" placeholder="" required value="">
+        <input type="number" id="Entry_6" name="entry" class="entry" placeholder="" required value="">
+        <input type="number" id="Entry_7" name="entry" class="entry" placeholder="" required value="">
+        <input type="submit" id="guessSubmit" value="Submit">
+      </form>
 
 		</div>
 
