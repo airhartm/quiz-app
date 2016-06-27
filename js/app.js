@@ -7,6 +7,11 @@ var fiboRandom;
 var gameResponse;
 var gameStatusArray;
 var currentQuestion=[];
+var Question = []
+var value;
+var access = false;
+
+//presence on screen/ during processing
 
 $(document).ready(function() {
 
@@ -17,6 +22,7 @@ $(document).ready(function() {
     $("#new").click(function(){
       newGame();
     });
+
 
    //user supplies missing integers in sequence
   $('#guessSubmit').click(function(e) {
@@ -58,29 +64,44 @@ $(document).ready(function() {
   function fiboDisplay (fiboForm) {
       fiboResponse.length=0;
       fiboRandom = getRandomNumber();
-        for (i = 0; i< 8; i++) { 
-                $('#Entry_'+i).css("color", "black");
+      new Answers(fiboRandom);
+
+        var question = new Answers(fiboRandom);
+
+        for (var i = 0; i< 8; i++) { 
+                $('#Entry_'+[i]).css("color", "black");
                 $('#Entry_'+i).readonly=true;
                 fiboResponse[i]="";
                 $('#Entry_'+i).val("");
         }
-         for (i = 0; i< 7-fiboCounter; i++) { 
-                $('#Entry_'+i).css("color", "black");
+         for (var i = 0; i< 8; i++) { 
                 $('#Entry_'+i).readonly=true;
-                fiboResponse[i]=fiboArray[fiboRandom+i];
+                fiboResponse[i]=question.box[i];
                 $('#Entry_'+i).val(fiboResponse[i]);
         }
-         for (i = 7-fiboCounter; i< 8; i++) { 
-                $('#Entry_'+i).css("color", "black");
+         for (var i = question.startingBox; i< question.startingBox+3; i++) { 
                 $('#Entry_'+i).readonly=false;
-                fiboResponse[i]=fiboArray[fiboRandom+i];
+                fiboResponse[i]=question.box[i];
+                $('#Entry_'+i).val("");
                 //$('#Entry_'+i).val(fiboResponse[i]);
         }
         return fiboResponse;
   }
 
+  function Answers(fiboRandom){
+     this.box=[];
+     for (i = 0; i< 8; i++) { 
+         this.box[i]=fiboArray[fiboRandom+i];
+        // this.numberEmpty=
+     }
+     this.startingBox=4
+  }
+
+
   function responseEval(fiboResponse) {
          $('#Status_'+fiboCounter).css("backgroundColor", "green");
+// rule in css for correct, toggle correct -- off correct, on incorrect
+// jQuery hide and show
          $('#Status_'+fiboCounter).css("color", "white");
          for (i = 0; i< 8; i++) { 
                 $('#Entry_'+[i]).css("color", "green");
@@ -98,7 +119,7 @@ $(document).ready(function() {
           document.getElementById("next").style.visibility = "hidden";
       }
   }
-
+ 
   function progress_bar () {
     guessList='';
     for (i = 1; i <= guessCounter; i++) { 

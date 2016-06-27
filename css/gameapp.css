@@ -180,10 +180,18 @@ h2 {
 
 .entry {
     display: inline-block;
+    color: black;
     width: 5em;
     height: 1em;
     border: 1px solid gray; 
     color: gray;
+}
+.entry.correct {
+    color: green;
+}
+
+.entry.incorrect {
+    color: red;
 }
 
 #response {
