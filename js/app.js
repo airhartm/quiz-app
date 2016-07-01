@@ -1,11 +1,12 @@
 //initialize variables
 
-var fiboArray = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811];
+var fiboArray = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657];
 var fiboResponse = [];
 var fiboCounter;
 var fiboRandom;
 var currentQuestion=[];
-var Question = []
+var Question = [];
+var fiboError =[0,0,0,0,0];
 
 //presence on screen/ during processing
 
@@ -23,10 +24,10 @@ $(document).ready(function() {
    //user supplies missing integers in sequence
   $('#guessSubmit').click(function(e) {
     e.preventDefault();
-         for (i = 4; i< 7; i++) { 
+         for (i = 0; i< 8; i++) { 
                 fiboResponse[i]=$('#Entry_'+i).val();
          }
-    responseEval(fiboResponse);
+    responseEval(fiboResponse,fiboError,fiboCounter);
 
   });
 
@@ -95,9 +96,10 @@ $(document).ready(function() {
   }
 
 
-  function responseEval(fiboResponse) {
+  function responseEval(fiboResponse, fiboError, fiboCounter) {
          $('#Status_'+fiboCounter).removeClass("incorrect");
          $('#Status_'+fiboCounter).addClass("correct");
+         fiboError[fiboCounter-1]=1;
          for (i = 0; i< 8; i++) { 
                 $('#Entry_'+[i]).removeClass("incorrect");
                 $('#Entry_'+[i]).addClass("correct");
@@ -107,6 +109,7 @@ $(document).ready(function() {
                   $('#Entry_'+i).val("");
                   $('#Entry_'+i).val(fiboResponse[i]); // rewrite incorrect answer with updated style
                   fiboResponse[i]=fiboArray[fiboRandom+i]; //replace incorrect answer in array to support list of correct answers  
+                  fiboError[fiboCounter-1]=0;
                 } else {
                   //
                 }
@@ -115,8 +118,12 @@ $(document).ready(function() {
           document.getElementById("guessSubmit").style.visibility = "hidden";
       if (fiboCounter < 5) {
           document.getElementById("next").style.visibility = "visible";
-      } else {        
-          $('#response').text("Game over! Click 'New Game' to play again.");
+      } else {
+          var total = 0;
+          $.each(fiboError,function() {
+            total += this;
+          });
+          $('#response').text("Game over! You answered "+total+" questions correctly. Click 'New Game' to play again.");
           document.getElementById("next").style.visibility = "hidden";
       }
   }
