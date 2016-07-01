@@ -143,7 +143,7 @@ h2 {
 }
 
 #left_control {
-  border: 1px solid green;
+  border: 0px;
   width: 19%;
   float: left;
   display: inline-block;
@@ -156,10 +156,17 @@ h2 {
   display: inline-block;
 }
  
+#q_count {
+  background-color: black;
+  color: white;
+}
+
 .button_vertical {
     width: 10em;
     height: 2em;
     border: 1px solid gray; 
+    background-color: black;
+    color: white;
 }
 
 .status {
@@ -171,6 +178,14 @@ h2 {
     border: 3px solid gray; 
     background-color: gray;
     color: white;
+}
+
+.status.correct{
+    background-color: green;
+}
+
+.status.incorrect{
+    background-color: red;
 }
 
 #sequence {
@@ -185,13 +200,20 @@ h2 {
     height: 1em;
     border: 1px solid gray; 
     color: gray;
+    background-color: white;
+}
+.button_vertical a {
+    color: white;
+    text-decoration: none;
 }
 .entry.correct {
-    color: green;
+    background-color: palegreen;
+    color: white;
 }
 
 .entry.incorrect {
-    color: red;
+    background-color: lightcoral;
+    color: white;
 }
 
 #response {

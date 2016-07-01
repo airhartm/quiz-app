@@ -4,12 +4,8 @@ var fiboArray = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 98
 var fiboResponse = [];
 var fiboCounter;
 var fiboRandom;
-var gameResponse;
-var gameStatusArray;
 var currentQuestion=[];
 var Question = []
-var value;
-var access = false;
 
 //presence on screen/ during processing
 
@@ -66,9 +62,10 @@ $(document).ready(function() {
       fiboRandom = getRandomNumber();
       new Answers(fiboRandom);
 
-        var question = new Answers(fiboRandom);
+      var question = new Answers(fiboRandom);
 
         for (var i = 0; i< 8; i++) { 
+                $('#Entry_'+[i]).removeClass("correct incorrect");
                 $('#Entry_'+[i]).css("color", "black");
                 $('#Entry_'+i).readonly=true;
                 fiboResponse[i]="";
@@ -79,7 +76,7 @@ $(document).ready(function() {
                 fiboResponse[i]=question.box[i];
                 $('#Entry_'+i).val(fiboResponse[i]);
         }
-         for (var i = question.startingBox; i< question.startingBox+3; i++) { 
+         for (var i = question.startingBox; i< 8; i++) { 
                 $('#Entry_'+i).readonly=false;
                 fiboResponse[i]=question.box[i];
                 $('#Entry_'+i).val("");
@@ -94,27 +91,31 @@ $(document).ready(function() {
          this.box[i]=fiboArray[fiboRandom+i];
         // this.numberEmpty=
      }
-     this.startingBox=4
+     this.startingBox=8-fiboCounter;
   }
 
 
   function responseEval(fiboResponse) {
-         $('#Status_'+fiboCounter).css("backgroundColor", "green");
-// rule in css for correct, toggle correct -- off correct, on incorrect
-// jQuery hide and show
-         $('#Status_'+fiboCounter).css("color", "white");
+         $('#Status_'+fiboCounter).removeClass("incorrect");
+         $('#Status_'+fiboCounter).addClass("correct");
          for (i = 0; i< 8; i++) { 
-                $('#Entry_'+[i]).css("color", "green");
+                $('#Entry_'+[i]).removeClass("incorrect");
+                $('#Entry_'+[i]).addClass("correct");
                 if (fiboArray[fiboRandom+i]!=fiboResponse[i]) {
-                  $('#Entry_'+[i]).css("color", "red");
-                  $('#Status_'+fiboCounter).css("backgroundColor", "red");
+                  $('#Entry_'+[i]).addClass("incorrect");
+                  $('#Status_'+fiboCounter).addClass("incorrect");
+                  $('#Entry_'+i).val("");
+                  $('#Entry_'+i).val(fiboResponse[i]); // rewrite incorrect answer with updated style
+                  fiboResponse[i]=fiboArray[fiboRandom+i]; //replace incorrect answer in array to support list of correct answers  
+                } else {
+                  //
                 }
           }
           $('#response').text("The correct answers were: "+fiboResponse);
           document.getElementById("guessSubmit").style.visibility = "hidden";
       if (fiboCounter < 5) {
           document.getElementById("next").style.visibility = "visible";
-      } else {
+      } else {        
           $('#response').text("Game over! Click 'New Game' to play again.");
           document.getElementById("next").style.visibility = "hidden";
       }
